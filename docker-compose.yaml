@@ -1,0 +1,20 @@
+version: "3"
+services:
+    web2:
+      image: httpd:latest
+      container_name: web2
+      ports:
+       - "8080:80"
+    web3:
+      build:
+        context: ./web3
+        dockerfile: Dockerfile
+      container_name: web3
+      ports:
+      - "8081:80"
+    proxy:
+      build:
+        context: ./proxy
+        dockerfile: Dockerfile
+      ports:
+      - "80:80/tcp"
